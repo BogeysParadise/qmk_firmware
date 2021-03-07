@@ -113,7 +113,12 @@ void shutdown_user(void) {
 
 __attribute__((weak)) void suspend_power_down_keymap(void) {}
 
-void suspend_power_down_user(void) { suspend_power_down_keymap(); }
+void suspend_power_down_user(void) {
+#ifdef OLED_DRIVER_ENABLE
+    oled_off();
+#endif
+    suspend_power_down_keymap();
+}
 
 __attribute__((weak)) void suspend_wakeup_init_keymap(void) {}
 
@@ -131,10 +136,6 @@ void matrix_scan_user(void) {
         has_ran_yet = true;
         startup_user();
     }
-
-#ifdef TAP_DANCE_ENABLE  // Run Diablo 3 macro checking code.
-    run_diablo_macro_check();
-#endif  // TAP_DANCE_ENABLE
 
 #if defined(RGBLIGHT_ENABLE)
     matrix_scan_rgb_light();
@@ -191,6 +192,9 @@ void eeconfig_init_user(void) {
     userspace_config.rgb_layer_change = true;
     eeconfig_update_user(userspace_config.raw);
     eeconfig_init_keymap();
+#ifdef VIA_ENABLE
+    via_eeprom_reset();
+#endif
     keyboard_init();
 }
 
