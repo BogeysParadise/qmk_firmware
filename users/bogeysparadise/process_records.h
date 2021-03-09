@@ -19,8 +19,7 @@
 
 
 enum userspace_custom_keycodes {
-    VRSN = SAFE_RANGE,              // Prints QMK Firmware and board info
-    KC_MAKE,                        // Run keyboard's customized make command
+    KC_MAKE = SAFE_RANGE,           // Run keyboard's customized make command
     KC_RGB_T,                       // Toggles RGB Layer Indication mode
     RGB_IDL,                        // RGB Idling animations
     KC_CCCV,                        // Hold to copy, tap to paste
@@ -29,8 +28,8 @@ enum userspace_custom_keycodes {
     NEW_SAFE_RANGE                  // use "NEWPLACEHOLDER for keymap specific codes
 };
 
-bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
-bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
+//bool process_record_secrets(uint16_t keycode, keyrecord_t *record);
+//bool process_record_keymap(uint16_t keycode, keyrecord_t *record);
 
 #define LOWER   MO(_LOWER)
 #define RAISE   MO(_RAISE)

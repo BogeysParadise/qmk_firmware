@@ -15,6 +15,8 @@
  */
 
 #pragma once
+#include QMK_KEYBOARD_H
+
 #include "eeprom.h"
 #include "wrappers.h"
 #include "process_records.h"
@@ -43,19 +45,18 @@
 #endif
 
 /* Define layer names */
-//*enum userspace_layers {
-//    _QWERTY  = 0,
-//    _MODS,
-//    _LOWER,
-//    _RAISE,
-//    _ADJUST,
-//};
+enum userspace_layers {
+    _QWERTY  = 0,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
+};
 
-#define _QWERTY 0
-#define _LOWER 1
-#define _RAISE 2
-#define _ADJUST 3
-#define _NUMPAD 4
+//#define _QWERTY 0
+//#define _LOWER 1
+//#define _RAISE 2
+//#define _ADJUST 3
+//#define _NUMPAD 4
 
 #define _MOUSE _MACROS
 
