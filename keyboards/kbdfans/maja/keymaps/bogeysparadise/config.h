@@ -29,6 +29,6 @@
 */
 
 
-#define RGB_MATRIX_STARTUP_HUE 0x50
-#define RGB_MATRIX_STARTUP_SPD 0xba
+//#define RGB_MATRIX_STARTUP_HUE 0x50
+//#define RGB_MATRIX_STARTUP_SPD 0xba
 
