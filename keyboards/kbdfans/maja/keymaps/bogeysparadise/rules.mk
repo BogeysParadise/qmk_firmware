@@ -4,7 +4,7 @@ RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
 RGBLIGHT_STARTUP_ANIMATION = no
 RGB_MATRIX_ENABLE = yes
 
-RGB_MATRIX_CUSTOM_USER = yes
+# RGB_MATRIX_CUSTOM_USER = yes
 
 BOOTMAGIC_ENABLE = no      # Virtual DIP switch configuration
 MOUSEKEY_ENABLE = no       # Mouse keys

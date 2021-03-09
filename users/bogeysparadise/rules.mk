@@ -3,8 +3,6 @@ SRC += bogeysparadise.c \
 
 # 	   combos.c
 
-# RGB_MATRIX_CUSTOM_USER = yes
-
 ifneq ($(PLATFORM),CHIBIOS)
     LTO_ENABLE        = yes
 endif
