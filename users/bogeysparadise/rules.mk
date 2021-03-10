@@ -1,22 +1,20 @@
 SRC += bogeysparadise.c \
        process_records.c
 
-# 	   combos.c
-
 ifneq ($(PLATFORM),CHIBIOS)
     LTO_ENABLE        = yes
 endif
 
 GRAVE_ESC_ENABLE      = yes
 #TAP_DANCE_ENABLE 	  = no       # Need to add code to enable.
-#COMBO_ENABLE 		  = yes      # Enable Combos
-
-#ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
-#    SRC += tap_dances.c
-#endif
+COMBO_ENABLE 		  = no      # Enable Combos
 
 ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
     SRC += tap_dances.c
+endif
+
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+    SRC += combos.c
 endif
 
 ifeq ($(strip $(RGBLIGHT_ENABLE)), yes)
