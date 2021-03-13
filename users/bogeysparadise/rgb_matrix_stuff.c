@@ -20,11 +20,13 @@
 extern led_config_t g_led_config;
 
 static uint32_t hypno_timer;
-#if defined(SPLIT_KEYBOARD) || defined(KEYBOARD_ergodox_ez) || defined(KEYBOARD_crkbd)
-#    define RGB_MATRIX_REST_MODE RGB_MATRIX_CYCLE_OUT_IN_DUAL
-#else
-#    define RGB_MATRIX_REST_MODE RGB_MATRIX_CYCLE_OUT_IN
-#endif
+
+//#if defined(SPLIT_KEYBOARD)
+//#    define RGB_MATRIX_REST_MODE RGB_MATRIX_CYCLE_OUT_IN_DUAL
+//#else
+//#    define RGB_MATRIX_REST_MODE RGB_MATRIX_CYCLE_OUT_IN
+//#endif
+
 
 void rgb_matrix_layer_helper(uint8_t hue, uint8_t sat, uint8_t val, uint8_t mode, uint8_t speed, uint8_t led_type, uint8_t led_min, uint8_t led_max) {
     HSV hsv = {hue, sat, val};
@@ -63,7 +65,7 @@ __attribute__((weak)) void rgb_matrix_indicator_keymap(void) {}
 void matrix_scan_rgb_matrix(void) {
 #if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     if (userspace_config.rgb_matrix_idle_anim && rgb_matrix_get_mode() == RGB_MATRIX_TYPING_HEATMAP && timer_elapsed32(hypno_timer) > 15000) {
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_REST_MODE);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_JELLYBEAN_RAINDROPS);
     }
 #endif
     rgb_matrix_indicator_keymap();
@@ -72,7 +74,7 @@ void matrix_scan_rgb_matrix(void) {
 void keyboard_post_init_rgb_matrix(void) {
 #if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     if (userspace_config.rgb_matrix_idle_anim) {
-        rgb_matrix_mode_noeeprom(RGB_MATRIX_REST_MODE);
+        rgb_matrix_mode_noeeprom(RGB_MATRIX_JELLYBEAN_RAINDROPS);
     }
 #endif
 }
@@ -80,7 +82,7 @@ void keyboard_post_init_rgb_matrix(void) {
 bool process_record_user_rgb_matrix(uint16_t keycode, keyrecord_t *record) {
 #if defined(RGB_MATRIX_FRAMEBUFFER_EFFECTS)
     hypno_timer = timer_read32();
-    if (userspace_config.rgb_matrix_idle_anim && rgb_matrix_get_mode() == RGB_MATRIX_REST_MODE) {
+    if (userspace_config.rgb_matrix_idle_anim && rgb_matrix_get_mode() == RGB_MATRIX_JELLYBEAN_RAINDROPS) {
         rgb_matrix_mode_noeeprom(RGB_MATRIX_TYPING_HEATMAP);
     }
 #endif
